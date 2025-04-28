@@ -45,7 +45,7 @@ A solution for trivia game, two users can connect to game and select among the q
 1. **Clone the repository**  
    ```bash
    git clone https://github.com/Amirreza-Jabbari/trivia-duel.git
-   cd trivia
+   cd trivia-duel
    ```
 
 2. **Create & activate a virtual environment**  
