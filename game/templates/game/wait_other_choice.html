@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="text-center py-16">
+    <h2 class="text-2xl mb-4">Round {{ round_num }}:</h2>
+    <p>Waiting for the other player to pick a category…</p>
+  </div>
+
+  <script>
+  setInterval(() => {
+    window.location.href = "{% url 'start_round' match.id %}";
+  }, 3000);
+  </script>
+{% endblock %}

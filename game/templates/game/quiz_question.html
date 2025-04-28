@@ -1,0 +1,28 @@
+{% extends "game/base.html" %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+  <div class="flex justify-between mb-4">
+    <span>Q{{ idx }} / {{ total }}</span>
+    <span id="timer">{{ time_limit }}</span>s
+  </div>
+  <h3 class="mb-4">{{ question.text }}</h3>
+  <form method="post" id="qform">{% csrf_token %}
+    {% for ch in choices %}
+    <label class="block mb-2">
+      <input type="radio" name="choice" value="{{ ch.id }}">
+      {{ ch.text }}
+    </label>
+    {% endfor %}
+    <button type="submit" class="mt-4 px-4 py-2 bg-green-500 text-white rounded">
+      Submit
+    </button>
+  </form>
+</div>
+<script>
+let t={{ time_limit }}, el=document.getElementById('timer'), f=document.getElementById('qform');
+setInterval(()=>{
+  t--; el.textContent=t;
+  if(t<=0) f.submit();
+},1000);
+</script>
+{% endblock %}

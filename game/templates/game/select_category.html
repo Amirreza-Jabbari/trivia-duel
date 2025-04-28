@@ -1,0 +1,14 @@
+{% extends "game/base.html" %}
+{% block content %}
+<h2 class="text-xl mb-4">Round {{ round_num }}: Choose a Category</h2>
+<form method="post">{% csrf_token %}
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {% for c in choices %}
+      <button type="submit" name="category" value="{{ c.slug }}"
+        class="p-4 bg-white shadow rounded hover:bg-gray-50">
+        {{ c.name }}
+      </button>
+    {% endfor %}
+  </div>
+</form>
+{% endblock %}

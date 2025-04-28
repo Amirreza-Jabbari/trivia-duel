@@ -1,0 +1,19 @@
+{% extends "game/base.html" %}
+{% block content %}
+<h2 class="text-xl mb-4">Round {{ rnd.round_number }} Results</h2>
+<table class="w-full bg-white rounded shadow">
+  <thead><tr class="bg-gray-200">
+    <th>Player</th><th>Score</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>{{ sess1.user.username }}</td><td>{{ sess1.score }}</td></tr>
+    <tr><td>{{ sess2.user.username }}</td><td>{{ sess2.score }}</td></tr>
+  </tbody>
+</table>
+<div class="mt-6">
+  <a href="{% url 'start_round' rnd.match.id %}"
+     class="px-4 py-2 bg-blue-600 text-white rounded">
+    {% if rnd.match.current_round <= TOTAL_ROUNDS %}Next Round{% else %}Match Summary{% endif %}
+  </a>
+</div>
+{% endblock %}
